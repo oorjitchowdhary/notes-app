@@ -7,28 +7,41 @@
     android:background="#EEEEEE"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/icon"
-        android:fontFamily="@font/productsans"
-        android:src="@drawable/icon"
-        android:layout_marginTop="105dp"
-        android:layout_marginStart="43dp"
-        android:scaleType="fitStart"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="105dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/icon"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/productsans"
+            android:src="@drawable/icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginEnd="85dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/productsans"
+            android:text="Notes"
+            android:textAlignment="textEnd"
+            android:textColor="#000"
+            android:textSize="60sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="84dp"
-        android:fontFamily="@font/productsans"
-        android:text="Notes"
+        android:text="A simple note-taking app"
         android:textAlignment="textEnd"
+        android:layout_marginEnd="60dp"
+        android:textSize="20dp"
         android:textColor="#000"
-        android:textSize="60sp"
-        android:textStyle="bold" />
-
+        android:layout_marginTop="180dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,4 +68,15 @@
             android:textColorHint="#000"
             android:textSize="30sp" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Login"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/productsans"
+        android:layout_alignParentBottom="true"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="#141414"/>
 </RelativeLayout>
