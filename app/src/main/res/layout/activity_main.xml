@@ -44,6 +44,7 @@
         android:textSize="20dp"
         android:textColor="#000"
         android:layout_marginTop="180dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:fontFamily="@font/productsans"
-            android:hint="Username"
-            android:id="@+id/username"
+            android:hint="Email"
+            android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:textColorHint="#000"
             android:textSize="30sp" />
@@ -73,15 +74,33 @@
             android:textSize="30sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/login"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Login"
-        android:layout_centerVertical="true"
-        android:fontFamily="@font/productsans"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:textSize="30dp"
-        android:textColor="#fff"
-        android:background="#141414"/>
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Login"
+            android:fontFamily="@font/productsans"
+            android:textSize="30dp"
+            android:textColor="#fff"
+            android:background="#141414"/>
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_marginTop="1dp"
+            android:onClick="signUp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Sign up"
+            android:fontFamily="@font/productsans"
+            android:textSize="30dp"
+            android:textColor="#fff"
+            android:background="#141414"/>
+    </LinearLayout>
+
 </RelativeLayout>

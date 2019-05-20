@@ -33,4 +33,16 @@
             android:textSize="55sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/create_note"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Add a Note"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/productsans"
+        android:layout_alignParentBottom="true"
+        android:textSize="30dp"
+        android:textColor="#fff"
+        android:background="#141414"/>
 </RelativeLayout>
