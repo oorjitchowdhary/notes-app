@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,8 +29,9 @@ public class ViewNotesActivity extends AppCompatActivity {
     }
 
         public void logOut(View view){
-            mAuth.signOut();
-            startActivity(new Intent(ViewNotesActivity.this,MainActivity.class));
+            mAuth.getInstance().signOut();
+            Toast.makeText(this, "Log-out successful", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this,MainActivity.class));
 
         }
 }

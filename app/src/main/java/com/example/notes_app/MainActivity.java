@@ -23,8 +23,13 @@ private FirebaseAuth mAuth;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-    }
+        FirebaseUser user = mAuth.getCurrentUser();
 
+        if (user != null){
+            Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this, ViewNotesActivity.class));
+        }
+    }
 
         public void signUp(View view) {
             EditText loginet = findViewById(R.id.email);
@@ -39,11 +44,10 @@ private FirebaseAuth mAuth;
                                 // Sign in success, update UI with the signed-in user's information
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(getApplicationContext(),"Sign up successful.",Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(MainActivity.this,CreateNoteActivity.class));
+                                startActivity(new Intent(MainActivity.this,ViewNotesActivity.class));
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(getApplicationContext(),"Sign up failed.",Toast.LENGTH_LONG).show();
-                                System.out.println(task.getException());
                             }
 
                             // ...
@@ -64,11 +68,11 @@ private FirebaseAuth mAuth;
                                 // Sign in success, update UI with the signed-in user's information
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(MainActivity.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, CreateNoteActivity.class));
-                            } else {
+                                startActivity(new Intent(MainActivity.this, ViewNotesActivity.class));
+                            }
+                            else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(MainActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
