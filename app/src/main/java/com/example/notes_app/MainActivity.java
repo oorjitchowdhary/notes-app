@@ -27,10 +27,10 @@ private FirebaseAuth mAuth;
 
 
         public void signUp(View view) {
-            EditText loginet=findViewById(R.id.email);
-            EditText passwordet=findViewById(R.id.password);
-            String email=loginet.getText().toString();
-            String password=passwordet.getText().toString();
+            EditText loginet = findViewById(R.id.email);
+            EditText passwordet = findViewById(R.id.password);
+            String email = loginet.getText().toString();
+            String password = passwordet.getText().toString();
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -43,9 +43,33 @@ private FirebaseAuth mAuth;
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(getApplicationContext(),"Sign up failed.",Toast.LENGTH_LONG).show();
+                                System.out.println(task.getException());
                             }
 
                             // ...
+                        }
+                    });
+        }
+
+        public void logIn(View view){
+            EditText loginet = findViewById(R.id.email);
+            EditText passwordet = findViewById(R.id.password);
+            String email = loginet.getText().toString();
+            String password = passwordet.getText().toString();
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Toast.makeText(MainActivity.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, CreateNoteActivity.class));
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(MainActivity.this, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
         }

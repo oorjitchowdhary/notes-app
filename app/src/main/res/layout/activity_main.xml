@@ -88,6 +88,7 @@
             android:fontFamily="@font/productsans"
             android:textSize="30dp"
             android:textColor="#fff"
+            android:onClick="logIn"
             android:background="#141414"/>
 
         <Button
@@ -102,5 +103,4 @@
             android:textColor="#fff"
             android:background="#141414"/>
     </LinearLayout>
-
 </RelativeLayout>
