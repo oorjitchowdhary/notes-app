@@ -43,7 +43,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/n_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -55,7 +55,7 @@
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/content"
+            android:id="@+id/n_content"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="15dp"
@@ -72,6 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Save"
+        android:onClick="saveNote"
         android:layout_centerVertical="true"
         android:fontFamily="@font/productsans"
         android:layout_alignParentBottom="true"

@@ -34,4 +34,6 @@ public class ViewNotesActivity extends AppCompatActivity {
             startActivity(new Intent(this,MainActivity.class));
 
         }
+
+        public void 
 }
