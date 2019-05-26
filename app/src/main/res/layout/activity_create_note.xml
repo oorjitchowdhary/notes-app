@@ -18,14 +18,12 @@
             android:layout_height="90dp"
             android:id="@+id/icon"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/productsans"
             android:src="@drawable/add_note_icon" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_marginEnd="31dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
             android:text="Add a Note"
             android:layout_marginTop="13dp"
             android:textAlignment="textEnd"
@@ -47,7 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:fontFamily="@font/productsans"
             android:hint="Title"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
@@ -59,7 +56,6 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_margin="15dp"
-            android:fontFamily="@font/productsans"
             android:hint="Content"
             android:inputType="textMultiLine"
             android:textAlignment="center"
@@ -74,7 +70,6 @@
         android:text="Save"
         android:onClick="saveNote"
         android:layout_centerVertical="true"
-        android:fontFamily="@font/productsans"
         android:layout_alignParentBottom="true"
         android:textSize="30dp"
         android:textColor="#fff"

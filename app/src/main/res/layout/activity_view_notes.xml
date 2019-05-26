@@ -8,6 +8,7 @@
     android:background="#EEEEEE">
 
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,23 +19,33 @@
             android:layout_height="90dp"
             android:id="@+id/icon"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/productsans"
             android:src="@drawable/icon" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_marginEnd="35dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/productsans"
             android:layout_marginTop="10dp"
             android:text="My Notes"
+            android:id="@+id/mynotes"
             android:textAlignment="textEnd"
             android:textColor="#000"
             android:textSize="55sp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"
+        android:padding="5dp"
+        android:layout_below="@id/linear1"
+        android:layout_above="@id/linear2">
+
+    </android.support.v7.widget.RecyclerView>
+
     <LinearLayout
+        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -45,7 +56,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Add a Note"
-            android:fontFamily="@font/productsans"
             android:textSize="30dp"
             android:textColor="#fff"
             android:background="#141414"/>
@@ -57,7 +67,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Logout"
-            android:fontFamily="@font/productsans"
             android:textSize="30dp"
             android:textColor="#fff"
             android:background="#141414"/>

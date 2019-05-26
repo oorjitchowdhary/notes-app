@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#e9e9e9"
+    android:layout_margin="8dp"
+    android:padding="7dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listtitle"
+        android:text="Title"
+        android:textSize="28sp"
+        android:textColor="#000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listcontent"
+        android:text="This is the content..."
+        android:textSize="25sp"
+        android:lines="1"
+        android:textColor="#000"/>
+
+</LinearLayout>

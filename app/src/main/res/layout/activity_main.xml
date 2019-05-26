@@ -18,7 +18,6 @@
             android:layout_height="100dp"
             android:id="@+id/icon"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/productsans"
             android:src="@drawable/icon" />
 
         <TextView
@@ -26,7 +25,6 @@
             android:layout_marginEnd="85dp"
             android:layout_height="wrap_content"
             android:id="@+id/tv1"
-            android:fontFamily="@font/productsans"
             android:text="Notes"
             android:textAlignment="textEnd"
             android:textColor="#000"
@@ -55,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:fontFamily="@font/productsans"
             android:hint="Email"
             android:id="@+id/email"
             android:inputType="textEmailAddress"
@@ -67,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:id="@+id/password"
-            android:fontFamily="@font/productsans"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColorHint="#000"
@@ -85,7 +81,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Login"
-            android:fontFamily="@font/productsans"
             android:textSize="30dp"
             android:textColor="#fff"
             android:onClick="logIn"
@@ -98,7 +93,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Sign up"
-            android:fontFamily="@font/productsans"
             android:textSize="30dp"
             android:textColor="#fff"
             android:background="#141414"/>
