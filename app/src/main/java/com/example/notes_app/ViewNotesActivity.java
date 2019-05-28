@@ -1,21 +1,35 @@
 package com.example.notes_app;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.notes_app.adapters.NotesRecyclerAdapter;
 import com.example.notes_app.models.NoteDetails;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ViewNotesActivity extends AppCompatActivity {
+import io.opencensus.tags.Tag;
+
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
+
+public class ViewNotesActivity extends AppCompatActivity implements NotesRecyclerAdapter.OnNotesListener {
     Button add_note;
     private FirebaseAuth mAuth;
     private RecyclerView mRecyclerView;
@@ -27,6 +41,13 @@ public class ViewNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
         mRecyclerView = findViewById(R.id.recyclerView);
+
+        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNoteClick(1);
+            }
+        });
         initRecyclerView();
         randomNotes();
 
@@ -44,7 +65,7 @@ public class ViewNotesActivity extends AppCompatActivity {
         for(int i = 1; i < 100; i++){
             NoteDetails note = new NoteDetails();
             note.setTitle("Title #" + i);
-            note.setContent("Content #" + i);
+            note.setContent("This is very very very long .... content #" + i);
             mNotes.add(note);
         }
         mNotesRecyclerAdapter.notifyDataSetChanged();
@@ -53,7 +74,7 @@ public class ViewNotesActivity extends AppCompatActivity {
     private void initRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mNotesRecyclerAdapter = new NotesRecyclerAdapter(mNotes);
+        mNotesRecyclerAdapter = new NotesRecyclerAdapter(mNotes, this);
         mRecyclerView.setAdapter(mNotesRecyclerAdapter);
     }
 
@@ -64,7 +85,10 @@ public class ViewNotesActivity extends AppCompatActivity {
 
     }
 
-    public void viewNotes(View view){
-
+    @Override
+    public void onNoteClick(int position) {
+        Intent intent = new Intent(ViewNotesActivity.this, IndividualNoteActivity.class);
+        intent.putExtra("selected_note", mNotes.get(position));
+        startActivity(intent);
     }
 }
