@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notes_app.adapters.NotesRecyclerAdapter;
@@ -40,6 +41,9 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
+
+        mAuth = FirebaseAuth.getInstance();
+
         mRecyclerView = findViewById(R.id.recyclerView);
 
         mRecyclerView.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +53,6 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
             }
         });
         initRecyclerView();
-        randomNotes();
 
         add_note = (Button) findViewById(R.id.create_note);
         add_note.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +62,11 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
                 startActivity(intent);
             }
         });
+
+        getNotes();
     }
 
-    private void randomNotes() {
+   /* private void randomNotes() {
         for(int i = 1; i < 100; i++){
             NoteDetails note = new NoteDetails();
             note.setTitle("Title #" + i);
@@ -69,7 +74,7 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
             mNotes.add(note);
         }
         mNotesRecyclerAdapter.notifyDataSetChanged();
-    }
+    }*/
 
     private void initRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -90,5 +95,30 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
         Intent intent = new Intent(ViewNotesActivity.this, IndividualNoteActivity.class);
         intent.putExtra("selected_note", mNotes.get(position));
         startActivity(intent);
+    }
+
+    private void getNotes(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Notes")
+                .whereEqualTo("UID", user.getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                System.out.println(document.getId() + " => " + document.getData());
+                                NoteDetails note = new NoteDetails();
+                                note.setTitle(document.getString("title"));
+                                note.setContent(document.getString("content"));
+                                mNotes.add(note);
+                            }
+                            mNotesRecyclerAdapter.notifyDataSetChanged();
+                        } else {
+                            System.out.println("Error retrieving notes: " + task.getException().getMessage());
+                        }
+                    }
+                });
     }
 }
