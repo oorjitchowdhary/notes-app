@@ -47,7 +47,7 @@ private FirebaseAuth mAuth;
                                 startActivity(new Intent(MainActivity.this,ViewNotesActivity.class));
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(getApplicationContext(),"Sign up failed.",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),task.getException().getMessage().toString(),Toast.LENGTH_LONG).show();
                             }
 
                             // ...
@@ -72,7 +72,7 @@ private FirebaseAuth mAuth;
                             }
                             else {
                                 // If sign in fails, display a message to the user.
-                                Toast.makeText(MainActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, task.getException().getMessage().toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

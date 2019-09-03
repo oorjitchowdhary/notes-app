@@ -3,4 +3,17 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="mainColor">#141414</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="blue">#4fc3f7</color>
+    <color name="green">#9ccc65</color>
+    <color name="yellow">#fff59d</color>
+    
+    <integer-array name="colors">
+        <item>@color/blue</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+        <item>@color/white</item>
+    </integer-array>
 </resources>

@@ -2,13 +2,18 @@ package com.example.notes_app;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.card.MaterialCardView;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +30,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import io.opencensus.tags.Tag;
 
@@ -36,12 +42,12 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
     private RecyclerView mRecyclerView;
     private ArrayList<NoteDetails> mNotes = new ArrayList<>();
     private NotesRecyclerAdapter mNotesRecyclerAdapter;
+    private MaterialCardView view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
-
         mAuth = FirebaseAuth.getInstance();
 
         mRecyclerView = findViewById(R.id.recyclerView);
@@ -66,19 +72,9 @@ public class ViewNotesActivity extends AppCompatActivity implements NotesRecycle
         getNotes();
     }
 
-   /* private void randomNotes() {
-        for(int i = 1; i < 100; i++){
-            NoteDetails note = new NoteDetails();
-            note.setTitle("Title #" + i);
-            note.setContent("This is very very very long .... content #" + i);
-            mNotes.add(note);
-        }
-        mNotesRecyclerAdapter.notifyDataSetChanged();
-    }*/
-
     private void initRecyclerView() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mNotesRecyclerAdapter = new NotesRecyclerAdapter(mNotes, this);
         mRecyclerView.setAdapter(mNotesRecyclerAdapter);
     }

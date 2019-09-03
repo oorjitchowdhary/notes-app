@@ -30,7 +30,7 @@
             android:id="@+id/mynotes"
             android:textAlignment="textEnd"
             android:textColor="#000"
-            android:textSize="55sp"
+            android:textSize="45sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -38,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
+        android:layout_centerInParent="true"
         android:padding="5dp"
         android:layout_below="@id/linear1"
         android:layout_above="@id/linear2">
@@ -48,28 +49,30 @@
         android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="45dp"
+        android:paddingEnd="45dp"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <Button
+        <android.support.design.button.MaterialButton
             android:id="@+id/create_note"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Add a Note"
-            android:textSize="30dp"
-            android:textColor="#fff"
-            android:background="#141414"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="New Note"
+            android:layout_marginEnd="10dp"
+            android:textSize="20sp"/>
 
-        <Button
+        <android.support.design.button.MaterialButton
             android:id="@+id/logout"
-            android:layout_marginTop="1dp"
             android:onClick="logOut"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
             android:text="Logout"
-            android:textSize="30dp"
-            android:textColor="#fff"
-            android:background="#141414"/>
+            android:textSize="20sp"/>
+
     </LinearLayout>
 
 </RelativeLayout>
